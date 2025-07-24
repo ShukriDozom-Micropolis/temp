@@ -46,15 +46,15 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       try {
         const data = JSON.parse(body);
-        const { id, temperature, humidity } = data;
+        const { id, temperature, humidity, rssi, soc, voltage } = data;
 
-        if (!id || temperature === undefined || humidity === undefined) {
+        if (!id || temperature === undefined || humidity === undefined || rssi === undefined || soc === undefined || voltage === undefined) {
           res.writeHead(400, { 'Content-Type': 'application/json' });
-          return res.end(JSON.stringify({ error: 'Missing id, temperature, or humidity' }));
+          return res.end(JSON.stringify({ error: 'Missing id, temperature, humidity, rssi, soc, or volatage' }));
         }
 
         const key = `sensor${id}`;
-        sensorData[key] = { temperature, humidity };
+        sensorData[key] = { temperature, humidity, rssi, soc, voltage };
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: 'ok' }));
