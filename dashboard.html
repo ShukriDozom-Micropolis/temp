@@ -47,6 +47,9 @@
           <div class="sensor-title">Sensor 1</div>
           <p><span class="sensor-label">Temperature:</span> <span id="sensor1-temp" class="sensor-data">--</span> °C</p>
           <p><span class="sensor-label">Humidity:</span> <span id="sensor1-humi" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">RSSI:</span> <span id="sensor1-rssi" class="sensor-data">--</span> db</p>
+          <p><span class="sensor-label">SOC:</span> <span id="sensor1-soc" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">Voltage:</span> <span id="sensor1-voltage" class="sensor-data">--</span> V</p>
         </div>
       </div>
 
@@ -55,6 +58,9 @@
           <div class="sensor-title">Sensor 2</div>
           <p><span class="sensor-label">Temperature:</span> <span id="sensor2-temp" class="sensor-data">--</span> °C</p>
           <p><span class="sensor-label">Humidity:</span> <span id="sensor2-humi" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">RSSI:</span> <span id="sensor2-rssi" class="sensor-data">--</span> db</p>
+          <p><span class="sensor-label">SOC:</span> <span id="sensor2-soc" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">Voltage:</span> <span id="sensor2-voltage" class="sensor-data">--</span> V</p>
         </div>
       </div>
 
@@ -63,6 +69,9 @@
           <div class="sensor-title">Sensor 3</div>
           <p><span class="sensor-label">Temperature:</span> <span id="sensor3-temp" class="sensor-data">--</span> °C</p>
           <p><span class="sensor-label">Humidity:</span> <span id="sensor3-humi" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">RSSI:</span> <span id="sensor3-rssi" class="sensor-data">--</span> db</p>
+          <p><span class="sensor-label">SOC:</span> <span id="sensor3-soc" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">Voltage:</span> <span id="sensor3-voltage" class="sensor-data">--</span> V</p>
         </div>
       </div>
 
@@ -71,6 +80,9 @@
           <div class="sensor-title">Sensor 4</div>
           <p><span class="sensor-label">Temperature:</span> <span id="sensor4-temp" class="sensor-data">--</span> °C</p>
           <p><span class="sensor-label">Humidity:</span> <span id="sensor4-humi" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">RSSI:</span> <span id="sensor4-rssi" class="sensor-data">--</span> db</p>
+          <p><span class="sensor-label">SOC:</span> <span id="sensor4-soc" class="sensor-data">--</span> %</p>
+          <p><span class="sensor-label">Voltage:</span> <span id="sensor4-voltage" class="sensor-data">--</span> V</p>
         </div>
       </div>
     </div>
@@ -85,9 +97,15 @@
         const data = await response.json();
         document.getElementById(`sensor${id}-temp`).textContent = data.temperature.toFixed(1);
         document.getElementById(`sensor${id}-humi`).textContent = data.humidity.toFixed(1);
+        document.getElementById(`sensor${id}-rssi`).textContent = data.rssi.toFixed(1);
+        document.getElementById(`sensor${id}-soc`).textContent = data.soc.toFixed(1);
+        document.getElementById(`sensor${id}-voltage`).textContent = data.voltage.toFixed(1);
       } catch (err) {
         document.getElementById(`sensor${id}-temp`).textContent = "--";
         document.getElementById(`sensor${id}-humi`).textContent = "--";
+        document.getElementById(`sensor${id}-rssi`).textContent = "--";
+        document.getElementById(`sensor${id}-soc`).textContent = "--";
+        document.getElementById(`sensor${id}-voltage`).textContent = "--";
       }
     }
 
